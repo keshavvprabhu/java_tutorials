@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import static org.junit.Assert.assertTrue;
+
 public class LoginStepDefinitions {
 
     WebDriver driver = null;
@@ -19,11 +21,11 @@ public class LoginStepDefinitions {
         driver.manage().window().maximize();
         driver.navigate().to("https://example.testproject.io");
     }
-    @When("User Enters username and password")
-    public void user_enters_username_and_password() {
+    @When("^User Enters (.*) and (.*)$")
+    public void user_enters_username_and_password(String username, String password) {
         System.out.println("User enters username and password");
-        driver.findElement(By.id("name")).sendKeys("junkyfunky");
-        driver.findElement(By.id("password")).sendKeys("12345");
+        driver.findElement(By.id("name")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
 
     }
     @When("User Clicks Login Button")
@@ -39,6 +41,7 @@ public class LoginStepDefinitions {
         driver.findElement(By.id("address")).sendKeys("Middle of Nowhere");
         driver.findElement(By.id("email")).sendKeys("gmail@yahoo.com");
         driver.findElement(By.id("phone")).sendKeys("9876543210");
+        assertTrue(driver.findElement(By.id("logout")).isDisplayed());
         driver.findElement(By.id("logout")).click();
         driver.findElement(By.id("login"));
         driver.close();
