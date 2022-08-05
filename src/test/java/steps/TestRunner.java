@@ -1,4 +1,4 @@
-package com.examples.cucumber;
+package steps;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -10,8 +10,5 @@ import org.junit.runner.RunWith;
         "junit:target/reports/junit/results.xml" },
         features="src/test/resources/features")
 public class TestRunner {
-//    @AfterClass
-//    public static void writeExtentReport() {
-//        Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
-//    }
+
 }
